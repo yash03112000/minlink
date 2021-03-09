@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import React, {useState} from 'react';
 import {TextField,Button,Typography} from '@material-ui/core';
 import { useRouter } from 'next/router'

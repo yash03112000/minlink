@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon --ignore pages server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "prod_start": "cross-env NODE_ENV=production node server.js",
+    "start":"npm run build && npm run prod_start"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
