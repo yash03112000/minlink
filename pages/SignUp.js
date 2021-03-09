@@ -4,8 +4,7 @@ import styles from '../styles/Home.module.css'
 import React, {useState} from 'react';
 import {TextField,Button,Typography} from '@material-ui/core';
 import { useRouter } from 'next/router'
-
-export default function Home() {
+export default function SignUp() {
 
 
 
@@ -15,20 +14,22 @@ export default function Home() {
   const router = useRouter()
 
 
-
   const login=(e)=>{
       e.preventDefault();
-      fetch(`/SignIn`, {method: 'POST',headers: {
+      fetch(`/SignUp`, {method: 'POST',headers: {
           'Content-Type': 'application/json'}, body: JSON.stringify({username:Name,password:Password})})
-          .then(res => {
+          .then(res =>{
               if(res.status === 200){
-                router.replace('/dashboard');
+                  router.push('/')
               }
           })
+          .catch((err)=>{throw err})
 
     }
+    
 
   return (
+    // status?<Link href="/"></Link>:
     <div className={styles.container}>
       <Head>
         <title>Minlinks</title>
@@ -40,7 +41,7 @@ export default function Home() {
             <div className= "col-8">
               <div className= "col-sm-8">
                 <Typography component="h4" color="primary" variant="h4" gutterBottom>
-                  SignIn
+                  SignUp
                 </Typography>
                   <form onSubmit={login}>
                     <div>
@@ -50,10 +51,10 @@ export default function Home() {
                       <TextField  type="password" required label="Password" name="Password" value={Password} onChange={(e)=>setPassword(e.target.value)} />
                     </div>
                     <div>
-                      <Button color="primary" variant="contained" type="submit" style={{margin:20}} >SignIn</Button>
+                      <Button color="primary" variant="contained" type="submit" style={{margin:20}} >SignUp</Button>
                     </div>
                   </form>
-                  <Typography component="h4" color="primary" variant="subtitle1" gutterBottom>New User?Sign Up <Link href="/SignUp" >Here</Link></Typography>
+                  <Typography component="h4" color="primary" variant="subtitle1" gutterBottom>Already a User?Sign In <Link href="/" >Here</Link></Typography>
               </div>
             </div>
           </div>
